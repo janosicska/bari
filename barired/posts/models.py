@@ -5,8 +5,8 @@ from model_utils.models import TimeStampedModel
 
 
 class Post(TimeStampedModel):
-    name = models.CharField("Name of Cheese", max_length=255)
-    slug = AutoSlugField("Cheese Address",
+    name = models.CharField("Title", max_length=255)
+    slug = AutoSlugField("Post Address",
                          unique=True, always_update=False, populate_from="name")
     description = models.TextField("Description", blank=True)
 
