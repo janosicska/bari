@@ -1,1 +1,214 @@
 {% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- SHOWCASE SLIDER -->
+  <section >
+    <div id="landing">
+      <div class="dark-overlay landing-inner text-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h1 class="display-3 mb-4 mt-5">BARI</h1>
+              <h3 class="display-5">
+                Una red LIBRE y SIN CENSURA
+              </h3>
+              <hr />
+              <a href={% url 'account_signup' %} class="btn btn-lg btn-danger"
+                >Registrate <i class="fas fa-book-open"></i
+              ></a>
+              <a href={% url 'account_login' %} class="btn btn-lg btn-outline-light mr-2"
+                >Ingresar <i class="fas fa-sign-in-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!--HOME ICON SECTION  -->
+  <section id="home-icons" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Esta Red es:</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-project-diagram fa-3x mb-2"></i>
+          <h3>Descentralizada</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="far fa-sun fa-3x mb-2"></i>
+          <h3>Libre</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-user-secret fa-3x mb-2"></i>
+          <h3>Privada</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME HEADING SECTION -->
+  <section id="home-heading" class="p-5">
+{#    <div class="dark-overlay">#}
+      <div class="row">
+        <div class="col">
+          <div class="container text-center text-light pt-5">
+            <h2>Forma parte de nuestra comunidad</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est eaque magni sit dolores. Nisi, dolor nam modi perspiciatis
+              consequatur soluta.</p>
+            <a href={% url 'account_signup' %} class="btn btn-lg btn-danger mt-2 m-auto"
+                >Sign up <i class="fas fa-book-open"></i
+              ></a>
+          </div>
+        </div>
+      </div>
+{#    </div>#}
+  </section>
+
+  <!--MODULES SECTION  -->
+  <section id="home-icons" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Lorem Ipsum</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-users fa-3x mb-2"></i>
+          <h3>Social</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-glass-cheers fa-3x mb-2"></i>
+          <h3>Eventos</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-guitar fa-3x mb-2"></i>
+          <h3>Cultura</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-newspaper fa-3x mb-2"></i>
+          <h3>Noticias</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="far fa-handshake fa-3x mb-2"></i>
+          <h3>Clasificados</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fab fa-bitcoin fa-3x mb-2"></i>
+          <h3>Crypto</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{#  <!-- INFO SECTION -->#}
+  <section id="info" class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+          <h3>¿Querés aprender cómo usar internet de manera más segura y privada?</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate eveniet blanditiis incidunt iusto corrupti illum
+            cum laudantium ex sequi amet.</p>
+          <a href="about.html" class="btn btn-outline-danger btn-lg">Leer Guía</a>
+        </div>
+        <div class="col-md-6">
+          <img src="{% static 'images/privacy.jpg' %}" alt="" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+{#  <!-- QUOTE SECTION -->#}
+  <section class="mt-5">
+      <div class="row bg-dark">
+        <div class="col-3" id="spooner">
+          <img src="https://travsd.files.wordpress.com/2016/01/lysander-spooner.jpg" style="max-height: 300px">
+        </div>
+        <div class="col-9">
+          <div class="container p-5">
+            <h2 class="text-light font-italic">"If a Jury have not the right to judge between the government and those who disobey its laws, the government is
+            absolute, and the people, legally speaking, are slaves."</h2>
+            <br>
+            <h4 class="text-light">Lysander Spooner</h4>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section id="gallery" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Ultimos Posteos</h2>
+      <p class="text-center">Forma parte de la comunidad</p>
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <a href="https://source.unsplash.com/560x560/?bariloche" data-toggle="lightbox" data-gallery="img-gallery" data-height="560"
+            data-width="560">
+            <img src="https://source.unsplash.com/560x560/?bariloche" alt="" class="img-fluid">
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://source.unsplash.com/561x561/?bariloche" data-toggle="lightbox" data-gallery="img-gallery" data-height="561"
+            data-width="561">
+            <img src="https://source.unsplash.com/561x561/?bariloche" alt="" class="img-fluid">
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://source.unsplash.com/562x562/?bariloche" data-toggle="lightbox" data-gallery="img-gallery" data-height="562"
+            data-width="562">
+            <img src="https://source.unsplash.com/562x562/?bariloche" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <a href="https://source.unsplash.com/563x563/?bariloche" data-toggle="lightbox" data-gallery="img-gallery" data-height="563"
+            data-width="563">
+            <img src="https://source.unsplash.com/563x563/?bariloche" alt="" class="img-fluid">
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://source.unsplash.com564x564/?bariloche" data-toggle="lightbox" data-gallery="img-gallery" data-height="564"
+            data-width="564">
+            <img src="https://source.unsplash.com/564x564/?bariloche" alt="" class="img-fluid">
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://source.unsplash.com/565x565/?bariloche" data-toggle="lightbox" data-gallery="img-gallery" data-height="565"
+            data-width="565">
+            <img src="https://source.unsplash.com/565x565/?bariloche" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="text-center p-5 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Sumate <i class="fas fa-user-secret ml-2"></i></h2>
+          <p>Recibí consejos para usar internet de manera más segura y privada.</p>
+          <form class="form-inline justify-content-center">
+            <input type="text" class="form-control mb-2 mr-2" placeholder="Email">
+            <button class="btn btn-danger mb-2">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
