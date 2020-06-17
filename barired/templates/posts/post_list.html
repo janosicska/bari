@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Bari Red | Posts{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <h2>Posts</h2>
+
+    <ul>
+      {% for post in post_list %}
+        <li><a href="#TODO">{{ post.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+{% endblock content %}
