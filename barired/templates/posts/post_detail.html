@@ -8,7 +8,11 @@
 
         <div class="card text-center mt-3">
       <div class="card-header">
-        {{ user.name }} #Todo + Avatar
+        <h6 class="card-subtitle p-2">
+        <a href="{% url 'users:detail' post.creator.username %}" class="card-link">
+            {{ post.creator.username }}
+        </a>
+        </h6>
       </div>
           <img class="card-img-top" src="https://source.unsplash.com/960x560/?bariloche" alt="Card image cap">
       <div class="card-body">
