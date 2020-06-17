@@ -3,14 +3,24 @@
 {% block title %}Bari Red | Posts{% endblock title %}
 
 {% block content %}
-  <div class="container">
-    <h2>Posts</h2>
+      <div class="container">
+        <h2 class="mt-4">Posts</h2>
+        {% for post in post_list %}
 
-    <ul>
-      {% for post in post_list %}
-        <li><a href="#TODO">{{ post.name }}</a></li>
-      {% endfor %}
-    </ul>
+        <div class="card text-center mt-3">
+      <div class="card-header">
+        {{ object.username }} #Todo + Avatar
+      </div>
+          <img class="card-img-top" src="https://source.unsplash.com/760x260/?bariloche" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.name }}</h5>
+        <p class="card-text">{{ post.description }}</p>
+        <a href="{% url 'posts:detail' post.slug %}" class="btn btn-outline-danger">leer mas</a>
+      </div>
+
+    </div>
+
+        {% endfor %}
   </div>
 
 {% endblock content %}

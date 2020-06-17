@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Bari Red | Posts: {{ post.name }}{% endblock title %}
+
+{% block content %}
+      <div class="container">
+        <a href="{% url 'posts:list' %}"><i class="fas fa-long-arrow-alt-left mt-4"></i></a>
+
+        <div class="card text-center mt-3">
+      <div class="card-header">
+        {{ user.name }} #Todo + Avatar
+      </div>
+          <img class="card-img-top" src="https://source.unsplash.com/960x560/?bariloche" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.name }}</h5>
+        {% if post.description %}
+            <p>{{ post.description }}</p>
+        {% endif %}
+
+      </div>
+
+    </div>
+    <a href="{% url 'posts:list' %}"><i class="fas fa-long-arrow-alt-left mt-2"></i></a>
+  </div>
+
+{% endblock content %}
