@@ -20,5 +20,11 @@ urlpatterns = [
         view=views.PostDetailView.as_view(),
         name='detail'
     ),
+    path(
+        route='<slug:slug>/update/',
+        view=views.PostUpdateView.as_view(),
+        name='update'
+    ),
+
 
 ]

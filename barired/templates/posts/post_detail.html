@@ -5,13 +5,15 @@
 {% block content %}
       <div class="container">
         <a href="{% url 'posts:list' %}"><i class="fas fa-long-arrow-alt-left mt-4"></i></a>
-
+        <a href="{% url 'posts:update' post.slug %}"><p class="text-right"><i class="far fa-edit mt-4"></i></p></a>
         <div class="card text-center mt-3">
       <div class="card-header">
         <h6 class="card-subtitle p-2">
+          {% if post.creator.username %}
         <a href="{% url 'users:detail' post.creator.username %}" class="card-link">
             {{ post.creator.username }}
         </a>
+          {% endif %}
         </h6>
       </div>
           <img class="card-img-top" src="https://source.unsplash.com/960x560/?bariloche" alt="Card image cap">
