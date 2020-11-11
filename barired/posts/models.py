@@ -11,17 +11,6 @@ class Post(TimeStampedModel):
     slug = AutoSlugField("Post Address",
                          unique=True, always_update=False, populate_from="name")
     description = models.TextField("Description", blank=True)
-
-    class Type(models.TextChoices):
-        UNSPECIFIED = "unspecified", "Unspecified"
-        Social = "social", "Social"
-        Eventos = "eventos", "Eventos"
-        Cultura = "cultura", "Cultura"
-        HARD = "clasificados", "Clasificados"
-
-    type = models.CharField("Type", max_length=20,
-                                choices=Type.choices, default=Type.UNSPECIFIED)
-
     creator = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         null=True,
@@ -36,3 +25,21 @@ class Post(TimeStampedModel):
         return reverse(
             'posts:detail', kwargs={"slug": self.slug}
         )
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    name = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        on_delete=models.SET_NULL
+    )
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['created']
+
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'

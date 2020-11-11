@@ -19,18 +19,17 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = [
         'name',
         'description',
-        'type',
     ]
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
 
+
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     fields = [
         'name',
         'description',
-        'type',
     ]
     action = "Update"

@@ -46,20 +46,20 @@
 
           {% if request.user.is_authenticated %}
               <li class="nav-item mr-3">
-                <a class="nav-link" href="{% url 'posts:list' %}"><i class="far fa-comments text-danger"></i></a>
+                <a class="nav-link" href="{% url 'posts:list' %}">posts<i class="far fa-comments text-danger"></i></a>
               </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-beer text-warning"></i></a>
-              </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-guitar text-primary"></i></a>
-              </li>
+{#            <li class="nav-item mr-3">#}
+{#                <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-beer text-warning"></i></a>#}
+{#              </li>#}
+{#            <li class="nav-item mr-3">#}
+{#                <a class="nav-link" href="{% url 'posts:list' %}"><i class="fas fa-guitar text-primary"></i></a>#}
+{#              </li>#}
             <li class="nav-item mr-5">
-                <a class="nav-link" href="{% url 'posts:list' %}"><i class="far fa-handshake text-success"></i></a>
+                <a class="nav-link" href="{% url 'posts:list' %}">class<i class="far fa-handshake text-success"></i></a>
               </li>
             <li class="nav-item mr-3 ml-5">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'posts:add' %}"><i class="fas fa-pencil-alt"></i></a>
+                <a class="nav-link" href="{% url 'posts:add' %}">create<i class="fas fa-pencil-alt"></i></a>
               </li>
               <li class="nav-item mr-3 ml-5">
                 {# URL provided by django-allauth/account/urls.py #}
