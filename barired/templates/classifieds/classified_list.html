@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Bari Red | Classifieds{% endblock title %}
+
+{% block content %}
+      <div class="container">
+        <h2 class="mt-4">Classifieds</h2>
+        {% for classified in classifieds %}
+
+        <div class="card text-center mt-3">
+      <div class="card-header">
+       <h6 class="card-subtitle p-2">
+         {% if classified.creator.username %}
+{#        <a href="{% url 'classifieds:classified_detail' classified.creator.username %}" class="card-link">#}
+            {{ classified.creator.username }}
+{#        </a>#}
+         {% endif %}
+        </h6>
+      </div>
+          <img class="card-img-top" src="{{ classified.photo.url }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ classified.title }}</h5>
+        <p class="card-text">{{ classified.description }}</p>
+        <a href="{{ classified.get_absolute_url }}" class="btn btn-outline-danger">leer mas</a>
+      </div>
+
+    </div>
+
+        {% endfor %}
+  </div>
+
+{% endblock content %}

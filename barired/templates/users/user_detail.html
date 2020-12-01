@@ -6,12 +6,17 @@
 {% block content %}
 <div class="container">
 
-  <div class="row">
+  <div class="row mt-4">
     <div class="col-sm-12">
-
+    <div class="row">
+      {% if object.photo %}
+      <img style="max-height: 100px" src="{{ object.photo.url }}">
+      {% endif %}
       <h2 class="mt-4">{{ object.username }}</h2>
+    </div>
+
       {% if object.name %}
-        <p>{{ object.name }}</p>
+        <p class="mt-2">Name : {{ object.name }}</p>
       {% endif %}
       {% if object.bio %}
           <p>{{ object.bio|linebreaksbr }}</p>

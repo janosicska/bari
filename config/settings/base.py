@@ -84,7 +84,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "barired.users.apps.UsersConfig",
-    "barired.posts",
+    "barired.posts.apps.PostsConfig",
+    "barired.classifieds.apps.ClassifiedsConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

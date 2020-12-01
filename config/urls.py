@@ -26,6 +26,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
     path('posts/', include('barired.posts.urls', namespace='posts')),
+    path('classifieds/', include('barired.classifieds.urls', namespace='classifieds'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

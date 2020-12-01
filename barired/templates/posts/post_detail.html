@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Bari Red | Posts: {{ post.name }}{% endblock title %}
 
 {% block content %}
       <div class="container">
-        <a href="{% url 'posts:list' %}"><i class="fas fa-long-arrow-alt-left mt-4"></i></a>
+        <a href="{% url 'posts:post_list' %}"><i class="fas fa-long-arrow-alt-left mt-4"></i></a>
         <a href="{% url 'posts:update' post.slug %}"><p class="text-right"><i class="far fa-edit mt-4"></i></p></a>
         <div class="card text-center mt-3">
       <div class="card-header">
@@ -16,18 +17,48 @@
           {% endif %}
         </h6>
       </div>
-          <img class="card-img-top" src="https://source.unsplash.com/960x560/?bariloche" alt="Card image cap">
+        {% if post.photo %}
+          <img class="card-img-top" src="{{ post.photo.url}}" alt="Card image cap">
+        {% endif %}
       <div class="card-body">
         <h5 class="card-title">{{ post.name }}</h5>
         {% if post.description %}
             <p>{{ post.description }}</p>
         {% endif %}
+      {% with comments.count as total_comments %}
+        <strong>
+          {{ total_comments }} comment{{ total_comments|pluralize }}
+        </strong>
+      {% endwith %}
 
       </div>
+{#        End Card#}
 
+        {% for comment in comments %}
+          <div class="comment">
+            <p>
+              Comment by {{ comment.name.email }}
+              {{ comment.created }}
+            </p>
+          {{ comment.body|linebreaks }}
+          </div>
+          {% empty %}
+          <p>There are no comments yet</p>
+        {% endfor %}
+
+        {% if new_comment %}
+        <strong>Comment successfully added</strong>
+        {% else %}
+        <strong>Agregar Comentario</strong>
+        <form method="post">
+          {{ comment_form|crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-danger">Comentar</button>
+        </form>
+        {% endif %}
     </div>
 
-    <a href="{% url 'posts:list' %}"><i class="fas fa-long-arrow-alt-left mt-2"></i></a>
+    <a href="{% url 'posts:post_list' %}"><i class="fas fa-long-arrow-alt-left mt-2"></i></a>
   </div>
 
 {% endblock content %}

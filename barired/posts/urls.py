@@ -5,23 +5,19 @@ from . import views
 
 app_name = "posts"
 urlpatterns = [
-    path(
-        route='',
-        view=views.PostListView.as_view(),
-        name='list'
-    ),
+    path('', views.post_list, name='post_list'),
     path(
         route='add/',
         view=views.PostCreateView.as_view(),
         name='add'
     ),
     path(
-        route='<slug:slug>/',
-        view=views.PostDetailView.as_view(),
-        name='detail'
+        '<int:id>/<slug:slug>/',
+        views.post_detail,
+        name='post_detail'
     ),
     path(
-        route='<slug:slug>/update/',
+        route='<int:id>/<slug:post>/update/',
         view=views.PostUpdateView.as_view(),
         name='update'
     ),
