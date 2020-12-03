@@ -3,12 +3,14 @@ from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.shortcuts import (render, get_object_or_404)
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from .models import Post
 
 from .forms import CommentForm
 
 
+@login_required
 def post_detail(request, id, slug):
     post = get_object_or_404(Post, slug=slug, id=id)
 
@@ -39,6 +41,7 @@ def post_detail(request, id, slug):
                    })
 
 
+@login_required
 def post_list(request):
     posts = Post.objects.all()
 

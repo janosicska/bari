@@ -11,17 +11,20 @@
       <div class="card-header">
        <h6 class="card-subtitle p-2">
          {% if classified.creator.username %}
-{#        <a href="{% url 'classifieds:classified_detail' classified.creator.username %}" class="card-link">#}
-            {{ classified.creator.username }}
-{#        </a>#}
+           <a href="{% url 'users:detail' classified.creator.username %}" class="card-link text-dark">
+             <img src="{{ classified.creator.photo.url }}" style="max-height: 25px">
+              {{ classified.creator.username }}
+           </a>
          {% endif %}
         </h6>
       </div>
+        <a href="{% url 'classifieds:classified_detail' classified.id classified.slug %}">
           <img class="card-img-top" src="{{ classified.photo.url }}" alt="Card image cap">
+        </a>
       <div class="card-body">
         <h5 class="card-title">{{ classified.title }}</h5>
         <p class="card-text">{{ classified.description }}</p>
-        <a href="{{ classified.get_absolute_url }}" class="btn btn-outline-danger">leer mas</a>
+        <a href="{% url 'classifieds:classified_detail' classified.id classified.slug %}" class="btn btn-outline-danger">leer mas</a>
       </div>
 
     </div>

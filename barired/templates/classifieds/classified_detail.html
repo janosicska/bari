@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Bari Red | Classified: {{ classified.title }}{% endblock title %}
+
+{% block content %}
+      <div class="container">
+        <a href="{% url 'classifieds:classified_list' %}"><i class="fas fa-long-arrow-alt-left mt-4 text-dark"></i></a>
+        <a href="{% url 'classifieds:update' classified.id classified.slug %}"><p class="text-right"><i class="far fa-edit mt-4"></i></p></a>
+        <div class="card text-center mt-3">
+      <div class="card-header">
+        <h6 class="card-subtitle p-2">
+        {% if classified.creator.username %}
+           <a href="{% url 'users:detail' classified.creator.username %}" class="card-link text-dark">
+             <img src="{{ classified.creator.photo.url }}" style="max-height: 25px">
+              {{ classified.creator.username }}
+           </a>
+         {% endif %}
+        </h6>
+      </div>
+        {% if classified.photo %}
+          <img class="card-img-top" src="{{ classified.photo.url}}" alt="Card image cap">
+        {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ classified.title }}</h5>
+        {% if classified.description %}
+            <p>{{ classified.description }}</p>
+        {% endif %}
+
+      </div>
+{#        End Card#}
+
+    </div>
+
+    <a href="{% url 'classifieds:classified_list' %}"><i class="fas fa-long-arrow-alt-left mt-2 text-dark"></i></a>
+  </div>
+
+{% endblock content %}

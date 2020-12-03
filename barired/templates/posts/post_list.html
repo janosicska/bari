@@ -10,10 +10,11 @@
         <div class="card text-center mt-3">
       <div class="card-header">
        <h6 class="card-subtitle p-2">
-         {% if post.creator.username %}
-        <a href="{% url 'users:detail' post.creator.username %}" class="card-link">
-            {{ post.creator.username }}
-        </a>
+        {% if post.creator.username %}
+           <a href="{% url 'users:detail' post.creator.username %}" class="card-link text-dark">
+             <img src="{{ post.creator.photo.url }}" style="max-height: 25px">
+              {{ post.creator.username }}
+           </a>
          {% endif %}
         </h6>
       </div>
@@ -21,7 +22,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ post.name }}</h5>
         <p class="card-text">{{ post.description }}</p>
-        <a href="{% url 'posts:post_detail' post.slug %}" class="btn btn-outline-danger">leer mas</a>
+        <a href="{% url 'posts:post_detail' post.id post.slug %}" class="btn btn-outline-danger">leer mas</a>
       </div>
 
     </div>

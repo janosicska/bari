@@ -5,16 +5,17 @@
 
 {% block content %}
       <div class="container">
-        <a href="{% url 'posts:post_list' %}"><i class="fas fa-long-arrow-alt-left mt-4"></i></a>
-        <a href="{% url 'posts:update' post.slug %}"><p class="text-right"><i class="far fa-edit mt-4"></i></p></a>
+        <a href="{% url 'posts:post_list' %}"><i class="fas fa-long-arrow-alt-left mt-4 text-dark"></i></a>
+        <a href="{% url 'posts:update' post.id post.slug %}"><p class="text-right"><i class="far fa-edit mt-4"></i></p></a>
         <div class="card text-center mt-3">
       <div class="card-header">
         <h6 class="card-subtitle p-2">
-          {% if post.creator.username %}
-        <a href="{% url 'users:detail' post.creator.username %}" class="card-link">
-            {{ post.creator.username }}
-        </a>
-          {% endif %}
+        {% if post.creator.username %}
+           <a href="{% url 'users:detail' post.creator.username %}" class="card-link text-dark">
+             <img src="{{ post.creator.photo.url }}" style="max-height: 25px">
+              {{ post.creator.username }}
+           </a>
+         {% endif %}
         </h6>
       </div>
         {% if post.photo %}
@@ -58,7 +59,7 @@
         {% endif %}
     </div>
 
-    <a href="{% url 'posts:post_list' %}"><i class="fas fa-long-arrow-alt-left mt-2"></i></a>
+    <a href="{% url 'posts:post_list' %}"><i class="fas fa-long-arrow-alt-left mt-2 text-dark"></i></a>
   </div>
 
 {% endblock content %}

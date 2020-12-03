@@ -3,10 +3,13 @@ from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.shortcuts import (render, get_object_or_404)
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 
 from .models import Classified
 
 
+@login_required
 def classified_list(request):
     classifieds = Classified.objects.all()
 
@@ -15,6 +18,7 @@ def classified_list(request):
                   {'classifieds': classifieds})
 
 
+@login_required
 def classified_detail(request, id, slug):
     classified = get_object_or_404(Classified, id=id, slug=slug)
 
@@ -42,7 +46,7 @@ class ClassifiedCreateView(LoginRequiredMixin, CreateView):
 class ClassifiedUpdateView(LoginRequiredMixin, UpdateView):
     model = Classified
     fields = [
-        'name',
+        'title',
         'photo',
         'price',
         'category',
