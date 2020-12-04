@@ -5,9 +5,23 @@ from django.views.generic import (
     DetailView,
     RedirectView,
     UpdateView,
+    ListView,
 )
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from ..common.decorators import ajax_required
+from .models import Contact
 
 User = get_user_model()
+
+
+class UserListView(LoginRequiredMixin, ListView):
+    model = User
+    paginate_by = 30  # if pagination is desired
+
+
+user_list_view = UserListView.as_view()
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -63,3 +77,25 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+
+@ajax_required
+@require_POST
+@login_required
+def user_follow(request):
+    user_id = request.POST.get('id')
+    action = request.POST.get('action')
+    if user_id and action:
+        try:
+            user = User.objects.get(id=user_id)
+            if action == 'follow':
+                Contact.objects.get_or_create(user_from=request.user, user_to=user)
+            else:
+                Contact.objects.filter(user_from=request.user, user_to=user).delete()
+
+            return JsonResponse({'status':'ok'})
+
+        except User.DoesNotExist:
+            return JsonResponse({'status':'error'})
+
+    return JsonResponse({'status':'error'})

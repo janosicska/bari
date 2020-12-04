@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Bari Red | User List{% endblock title %}
+
+{% block content %}
+      <div class="container">
+        <h2 class="mt-4 mb-2">Users</h2>
+      <div class="col-md-6">
+        <div class="card shadow">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+          {% for user in user_list %}
+
+          <li class="list-group-item list-group-item-action">
+          <div class="row">
+            <div class="col-6">
+              {% if user.username %}
+            <a href="{% url 'users:detail' user.username %}" class="card-link text-dark">
+              {% if user.photo %}
+               <img src="{{ user.photo.url }}" style="max-height: 25px">
+                {% endif %}
+                {{ user.username }}
+             </a>
+
+            {% endif %}
+            </div>
+{#          Follow button#}
+            <div class="col-6">
+              <a href="#" data-id="{{ user.id }}" data-action="{% if request.user in user.followers.all %}
+                un{% endif %}follow" class="btn btn-outline-danger btn-sm float-right">
+                  {% if request.user not in user.followers.all %}
+                  Follow
+                  {% else %}
+                  Unfollow
+                  {% endif %}
+                </a>
+            </div>
+          </div>
+
+          </li>
+
+          {% endfor %}
+        </ul>
+        </div>
+      </div>
+      </div>
+
+
+
+
+    </div>
+
+
+{% endblock content %}
+
+{% block domready %}
+  $('a.follow').click(function(e){
+  e.preventDefault();
+  $.post('{% url "user_follow" %}',
+  {
+  id: $(this).data('id'),
+  action: $(this).data('action')
+  },
+  function(data){
+  if (data['status'] == 'ok') {
+  var previous_action = $('a.follow').data('action');
+  // toggle data-action
+  $('a.follow').data('action',
+  previous_action == 'follow' ? 'unfollow' : 'follow');
+  // toggle link text
+$('a.follow').text(
+previous_action == 'follow' ? 'Unfollow' : 'Follow');
+// update total followers
+var previous_followers = parseInt(
+$('span.count .total').text());
+$('span.count .total').text(previous_action == 'follow' ?
+previous_followers + 1 : previous_followers - 1);
+}
+}
+);
+});
+{% endblock %}
